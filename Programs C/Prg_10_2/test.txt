@@ -1,0 +1,5 @@
+trufanov@trufanov110:/media/trufanov/IVT-24 Truf/Programs C/Prg_10_2$ clang Program_10_2.c solve_module.c -o Program_10_2.exe
+/usr/bin/ld: /tmp/solve_module-c1373c.o: in function `getMaxLineFromFile':
+solve_module.c:(.text+0x0): multiple definition of `getMaxLineFromFile'; /tmp/Program_10_2-86c2f1.o:Program_10_2.c:(.text+0x0): first defined here
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+trufanov@trufanov110:/media/trufanov/IVT-24 Truf/Programs C/Prg_10_2$ clang Program_10_2.c solve_module.c -o Program_10_2.exe
