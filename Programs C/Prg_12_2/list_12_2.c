@@ -2,78 +2,88 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-void printList(Node **Head) {
-    Node *Current = *Head;
+
+void PrintList(Node *head) {
+    Node *Current = head;
+    printf("=== Out ===\n");
+    if (head == NULL) {
+        printf("List is clear\n");
+        return;
+    }
     while (Current != NULL) {
-        printf("%i\n", Current->data);
+        printf("%i ", Current->data);
         Current = Current->next;
     }
+    printf("\n");
 }
 
-// Процедура добавления элемента в список
-void AddNode(Node **head, int value) {
-    Node *newNode = (Node*)malloc(sizeof(Node));    // Объявляем и выделяем новый элемент
-    newNode->data = value;      // Заполняем его
-    newNode->next = NULL;
-    newNode->prev = NULL;
-
-    if (*head == NULL) {        // В случае если список пуст
-        *head = newNode;
-    } else {
-        Node *Current = *head;              // Переменная указатель
-        while (Current->next != NULL) {     // Ищем хвост
-            Current = Current->next;
-        }
-        Current->next = newNode;            // Цепляем к текущему новый элемент
-        newNode->prev = Current;            // Указываем в новом элементе предыдущий элемент
-    }
+// Реализация функции добавления ноды в конец списка
+Node* AddNode(Node *head, int data) {
+	Node *tmp = malloc(sizeof(Node));
+	tmp->data = data;
+	tmp->next = NULL;
+	if (head == NULL) {
+	    tmp->prev = NULL;
+		return tmp;
+	}
+	Node *cur = head;
+	while (cur->next != NULL) {
+		cur = cur->next;
+	}
+	tmp->prev = cur;
+	cur->next = tmp;
+	return head;
 }
 
-// Процедура сортировки списка
-void listSort(Node **Head) {
-    if (*Head == NULL) return;  // В случае пустого списка завершить выполнение процедуры
-    //printList(*&Head);
-    Node *tempNegative = NULL;  // Указатель на список отрицательных значений
-    Node *tempPositive = NULL;  // Указатель на список положительных значений
-    Node *Current = *Head;      // Временный указатель
-    Node *forDispose = *Head;   // Указатель на старый список
-
-    while (Current->next != NULL) {     // Ищем конец списка
-        Current = Current->next;
+// Процедура сортировки
+Node* SortList(Node *head) {
+    // Если список пуст
+    if (head == NULL) {
+        return NULL;
     }
 
 
-    while (Current != NULL) {           // Добавляем в список отрицательных значений эти самые значения
-        if (Current->data < 0) {
-            AddNode(&tempNegative, Current->data);
+    // Головы списков положительных и отрицательных элементов
+    Node *negative_head = NULL;
+    Node *positive_head = NULL;
+    // Текущий элемент
+    Node *current = head;
+
+    // Ищем все положительные элементы
+    while (current != NULL) {
+        if (current->data >= 0) {
+            positive_head = AddNode(positive_head, current->data);
         }
-        Current = Current->prev;
+        current = current->next;
     }
 
-    Current = *Head;                    // Добавляем положительные элементы в соотв. список
-    while (Current != NULL) {
-        if (Current->data >= 0) {
-            AddNode(&tempPositive, Current->data);
+    // Ищем хвост
+    current = head;
+    while (current->next != NULL) {
+        current = current->next;
+    }
+
+    // Ищем все отрицательные элементы
+    while (current != NULL) {
+        if (current->data < 0) {
+            negative_head = AddNode(negative_head, current->data);
         }
-        Current = Current->next;
+        current = current->prev;
     }
 
-    Current = tempNegative;             // Переставляем указатель на новый список
-    if (tempNegative != NULL) {         // В случае если список отрицательных не пустой
-        while (Current->next != NULL) { // Ищем его хвост
-            Current = Current->next;
+
+    // Ищем хвост списка отрицательных чисел
+    current = negative_head;
+    if (current != NULL) {
+        while (current->next != NULL) {
+            current = current->next;
         }
-        Current->next = tempPositive;   // Примыкаем к этому списку голову положительного списка
-        *Head = tempNegative;           // Передаём новый список
-    } else {
-        *Head = tempPositive;           // Если список отрицательных пуст - просто передаём положительный список
-    }
 
-    // Очищаем старый список
-    Current = forDispose;
-    while(Current != NULL) {
-        forDispose = Current->next;
-        free(Current);
-        Current = forDispose;
-    }
+        // Цепляем к нему положительные числа
+        current->next = positive_head;
+        return negative_head;
+
+    } else
+    // Если список отрицательных пуст:
+    return positive_head;
 }

@@ -9,30 +9,32 @@
 #include "list_12_2.h"
 
 int main(int argc, char **argv) {
-    if (argc != 2) {                            // Проверяем на аргументы
+    if (argc != 2) {
         printf("Usage: %s count\n", argv[0]);
         return 1;
     }
 
-    int count = atoi(argv[1]);                  // Получаем количество
-    Node *Head = NULL;                          // Создаём голову списка
+    // Указатель на голову списка
+    Node *Head;
+    // Количество элементов
+    int Count = atoi(argv[1]);
 
-    for (int i = 0; i < count; i++) {           // Заполняем его
-        int temp = 0.0;
+    // Считываем числа и добавляем их в список
+    for (int i = 0; i < Count; i++) {
+        int temp;
         scanf("%i", &temp);
-        AddNode(&Head, temp);
+        Head = AddNode(Head, temp);
     }
 
-    listSort(&Head);                            // Сортируем
+    Head = SortList(Head);
 
-    printf("===   Output   ===\n");
-    printList(&Head);                           // Выводим
+    PrintList(Head);
 
-    Node *current = Head;
-    while (current != NULL) {                   // Очищаем память
-        Node *temp = current;
-        current = current->next;
-        free(temp);
+    Node *Current = Head;
+    while (Current != NULL) {
+        Head = Current->next;
+        free(Current);
+        Current = Head;
     }
 
     return 0;

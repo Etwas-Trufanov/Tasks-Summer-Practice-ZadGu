@@ -10,12 +10,12 @@ typedef struct Node {
 
 
 // Процедура вывода списка
-void printList(Node **Head);
+void PrintList(Node *head);
 
-// Процедура добавления элемента в список
-void AddNode(Node **head, int value);
+// Функция добавления элемента в список
+Node* AddNode(Node *head, int data);
 
 // Процедура сортировки
-void listSort(Node **Head);
+Node* SortList(Node *head);
 
 #endif
