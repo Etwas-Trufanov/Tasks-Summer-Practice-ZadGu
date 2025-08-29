@@ -4,8 +4,8 @@
 // Структура узла списка
 typedef struct Node Node;
 
-// Процедура добавления элемента в список
-void AddNode(Node **head, float value);
+// Функция добавления элемента в список
+Node* AddNode(Node *head, float value);
 
 // Функция расчёта синуса модуля суммы списка
 float calcListSin(Node *Head);

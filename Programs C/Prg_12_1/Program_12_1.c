@@ -10,21 +10,21 @@
 
 int main(int argc, char **argv) {
     if (argc != 2) {    // Проверяем на кол-во аргументов
-        printf("Usage: %s count", argv[0]);
+        printf("Usage: %s count\n", argv[0]);
         return 1;
     }
 
     int count = atoi(argv[1]);  // Записываем кол-во элементов
-    Node *Head = NULL;          // Создаём голов списка
+    Node *head = NULL;          // Создаём голов списка
 
     for (int i = 0; i < count; i++) {   // Заполняем список
         float temp = 0.0;
         scanf("%f", &temp);
-        AddNode(&Head, temp);
+        head = AddNode(head, temp);
     }
 
-    float result = calcListSin(Head);   // Получаем синус списка
-    freeList(Head);
+    float result = calcListSin(head);   // Получаем синус списка
+    freeList(head);
     printf("%f\n", result);             // Выводим результат
 
     return 0;                           // Возвращаем 0

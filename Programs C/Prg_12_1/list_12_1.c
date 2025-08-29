@@ -4,25 +4,24 @@
 
 // Элемент списка
 typedef struct Node {
-    float data;           // Данные
-    struct Node* next;  // Указатель на следующий узел
+    float data;
+    struct Node *next;
 } Node;
 
-// Процедура добавления элемента в список
-void AddNode(Node **head, float value) {
-    Node *newNode = (Node*)malloc(sizeof(Node));    // Объявляем и выделяем элемент
-    newNode->data = value;                          // Заполняем его
-    newNode->next = NULL;                           // Следующий указатель ставим в NULL
-
-    if (*head == NULL) {                            // Прикрепляем элемент к списку
-        *head = newNode;
-    } else {
-        Node *Current = *head;
-        while (Current->next != NULL) {
-            Current = Current->next;
-        }
-        Current->next = newNode;
-    }
+// Функция добавления элемента в список
+Node* AddNode(Node *head, float value) {
+	Node *tmp = malloc(sizeof(Node));
+	tmp->data = value;
+	tmp->next = NULL;
+	if (head == NULL) {
+		return tmp;
+	}
+	Node *cur = head;
+	while (cur->next != NULL) {
+		cur = cur->next;
+	}
+	cur->next = tmp;
+	return head;
 }
 
 // Функция расчёта синуса модуля суммы списка
