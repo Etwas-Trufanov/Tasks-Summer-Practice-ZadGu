@@ -1,4 +1,6 @@
 #include "snakematrix.h"
+#include <stdio.h>
+
 
 // Процедура генерации матрицы
 void generateMatrix(int size, int matrixOut[size][size]) {
@@ -27,5 +29,21 @@ void generateMatrix(int size, int matrixOut[size][size]) {
                 break;
             }
         }
+    }
+}
+
+
+// Процедура решения
+void solve(unsigned size) {
+
+    int matrix[size][size];       // Объявляем матрицу
+
+    generateMatrix(size, matrix);  // Заполняем её
+
+    for (int y = 0; y < size; y++) {       // Выводим
+        for (int x = 0; x < size; x++) {
+            printf("%3i ", matrix[y][x]);
+        }
+        printf("\n");
     }
 }

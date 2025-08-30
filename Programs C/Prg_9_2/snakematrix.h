@@ -5,4 +5,8 @@
 
 // Процедура заполнения матрицы змейкой
 void generateMatrix(int size, int matrixOut[size][size]);
+
+// Процедура решения
+void solve(unsigned size);
+
 #endif
