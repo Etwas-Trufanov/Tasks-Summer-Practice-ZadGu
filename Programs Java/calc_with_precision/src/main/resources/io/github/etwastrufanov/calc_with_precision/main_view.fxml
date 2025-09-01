@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="230.0" maxWidth="300.0" minHeight="200.0" minWidth="300.0" prefHeight="230.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.etwastrufanov.calc_with_precision.MainController">
+   <children>
+      <Button fx:id="CalcButton" layoutX="25.0" layoutY="106.0" mnemonicParsing="false" onAction="#OnCalcClicked" text="Рассчитать" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="106.0" />
+      <TextField fx:id="ResultOutput" editable="false" layoutX="24.0" layoutY="164.0" AnchorPane.leftAnchor="24.0" AnchorPane.topAnchor="164.0" />
+      <TextField fx:id="PrecisionInput" layoutX="24.0" layoutY="64.0" promptText="(0.001)" AnchorPane.leftAnchor="24.0" AnchorPane.topAnchor="64.0" />
+      <Label layoutX="24.0" layoutY="40.0" text="Требуемая точность:" AnchorPane.leftAnchor="24.0" AnchorPane.topAnchor="40.0" />
+      <Label layoutX="24.0" layoutY="138.0" text="Результат:" AnchorPane.leftAnchor="24.0" AnchorPane.topAnchor="138.0" />
+      <MenuBar layoutY="1.0" prefHeight="27.0" prefWidth="300.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="1.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="Программа">
+            <items>
+              <MenuItem mnemonicParsing="false" text="О программе" onAction="#OnAboutClicked"/>
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </children>
+</AnchorPane>
