@@ -45,6 +45,7 @@ public class main_controller {
     public void on_menu_click(ActionEvent actionEvent) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("О программе");
+        alert.setHeaderText(null);
         alert.setContentText("Предназначена для рассчёта площади равностороннего треугольника");
         alert.showAndWait();
     }

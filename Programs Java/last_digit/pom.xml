@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>io.github.etwastrufanov</groupId>
-    <artifactId>last_digit</artifactId>
+    <artifactId>area_calc</artifactId>
     <version>1.0-SNAPSHOT</version>
     <name>last_digit</name>
 
